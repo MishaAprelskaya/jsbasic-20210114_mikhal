@@ -51,6 +51,7 @@ export default class CartIcon {
     );
 
     if (cart.y <= 0 && document.documentElement.clientWidth >= 767) {
+	  // eslint-disable-next-line no-mixed-spaces-and-tabs
 	  this.elem.style.cssText = `
 	  position: fixed;
 	  top: 50px;

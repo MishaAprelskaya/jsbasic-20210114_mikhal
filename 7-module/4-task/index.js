@@ -1,6 +1,6 @@
 export default class StepSlider {
   constructor({ steps, value = 0 }) {
-   this.steps = steps;
+    this.steps = steps;
     this.value = value;
     this.render(steps);
     this.elem.addEventListener('pointerdown', this.onPointerDown);
@@ -69,7 +69,7 @@ export default class StepSlider {
       value = 0;
     }
 
-    if (percentStep <= 100 && percentStep >= 0) {
+      if (percentStep <= 100 && percentStep >= 0) {
       sliderProgress.style.width = `${percentStep}%`;
       sliderThumb.style.left = `${percentStep}%`;
     }

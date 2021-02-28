@@ -5,5 +5,45 @@ export default class ProductGrid {
   constructor(products) {
     this.products = products;
     this.filters = {};
+render(products) {
+	let inner = document.createElement(`div`);
+	inner.classList.add("products-grid__iner");
+
+	products.forEach((el) => {
+		let card = new ProductCard(el);
+		inner.append(card.elem);
+	});
+
+	this.elem.append(inner);
+}
+
+updateFilter(filters) {
+	let filteredProducts = this.products.filter((el) => {
+		if (!filters.noNuts) return true;
+		return filters.noNuts !== el.nuts;
+	})
+	.filter((el) => {
+	if (!filters.vegeterianOnly) return true;
+	return filters.vegeterianOnly ===el.vegeterian;
+	})
+	.filter((el) => {
+      if (!filters.maxSpiciness) return true;
+      return filters.maxSpiciness >= el.spiciness;
+    })
+    .filter((el) => {
+      if (!filters.category) return true;
+      return filters.category === el.category;
+    });
+
+    this.elem.innerHTML = "";
+    let inner = document.createElement('div');
+    inner.classList.add("products-grid__inner");
+    filteredProducts.forEach((el) => {
+      let card =  new ProductCard(el);
+      inner.append(card.elem);
+    });
+
+    this.elem.append(inner);
   }
+}
 }
